@@ -211,4 +211,3 @@ Suggested alert baselines:
 ## Related Documents
 
 - Consolidated deep documentation: `docs/ALL-IN-ONE.md`
-- Generated technical design output: `GraceAI-Technical-Design-Document.docx`
