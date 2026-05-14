@@ -1,0 +1,103 @@
+# =============================================================================
+# Grace AI — do not commit local tooling, secrets, or generated artifacts
+# =============================================================================
+
+# --- Environment & secrets (never push real keys) ---
+.env
+.env.*
+!.env.example
+!.env*.example
+!.env.local.example
+apps/api/.env
+apps/web/.env.local
+apps/web/.env*.local
+*.pem
+*.key
+
+# --- Node.js / Next.js (apps/web) ---
+node_modules/
+apps/web/node_modules/
+apps/web/.next/
+apps/web/tmp/
+apps/web/out/
+apps/web/.turbo/
+apps/web/.vercel/
+apps/web/tsconfig.tsbuildinfo
+*.tsbuildinfo
+.npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# --- Python / FastAPI (apps/api) ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.venv/
+venv/
+ENV/
+env/
+apps/api/.venv/
+apps/api/venv/
+.venv-docx/
+
+# --- Test & type check caches ---
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# --- Celery / local process state ---
+celerybeat-schedule
+celerybeat.pid
+*.pid
+
+# --- Local dev runtime (scripts/restart-all.sh) ---
+.run/
+
+# --- IDE & editors ---
+.idea/
+*.swp
+*.swo
+*~
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# --- Logs & debug ---
+*.log
+logs/
+.cursor/debug*.log
+
+# --- Optional: local-only scratch (uncomment if your team agrees) ---
+# _scratch/
+
+# --- Misc generated ---
+*.orig
+*.bak
+.sass-cache/

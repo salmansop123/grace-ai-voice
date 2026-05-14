@@ -1,0 +1,7 @@
+flowchart TD
+  A[User hits plan limit] --> B[Show UpgradeModal]
+  B --> C[POST /api/billing/create-checkout]
+  C --> D[Stripe checkout session]
+  D --> E[Redirect to Stripe]
+  E --> F[Stripe webhook -> backend]
+  F --> G[Update org plan/limits]

@@ -1,0 +1,14 @@
+sequenceDiagram
+  participant User
+  participant Clerk
+  participant NextJS as Next.js Middleware
+  participant FastAPI
+  participant JOSE as python-jose
+  participant PostgreSQL
+  User->>Clerk: Sign in
+  Clerk-->>User: JWT token
+  User->>FastAPI: Bearer token request
+  FastAPI->>JOSE: Decode JWT
+  JOSE-->>FastAPI: Claims
+  FastAPI->>PostgreSQL: Resolve org by clerk_org_id
+  PostgreSQL-->>FastAPI: Org row

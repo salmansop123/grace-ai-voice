@@ -1,0 +1,12 @@
+{
+  "name": "grace-ai",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix apps/web",
+    "dev:web": "npm run dev --prefix apps/web",
+    "dev:fresh": "npm run dev:fresh --prefix apps/web",
+    "build:web": "npm run build --prefix apps/web",
+    "start": "bash scripts/restart-all.sh",
+    "dev:all": "bash scripts/restart-all.sh --watch"
+  }
+}

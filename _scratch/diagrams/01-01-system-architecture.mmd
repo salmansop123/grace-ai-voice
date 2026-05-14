@@ -1,0 +1,40 @@
+graph TB
+  subgraph Client_Layer[Client Layer]
+    Browser[Browser Next.js App]
+  end
+  subgraph Application_Layer[Application Layer]
+    Vercel[Vercel CDN + Next.js]
+    FastAPI[Railway FastAPI REST + SSE + WS]
+    Celery[Railway Celery Workers]
+  end
+  subgraph Data_Layer[Data Layer]
+    Postgres[(PostgreSQL 16 + pgvector)]
+    Redis[(Redis 7)]
+    Pinecone[(Pinecone)]
+    R2[(Cloudflare R2)]
+  end
+  subgraph External_Services[External Services]
+    Twilio[Twilio Voice + REST + Media Streams]
+    Deepgram[Deepgram WSS]
+    ElevenLabs[ElevenLabs TTS]
+    OpenAI[OpenAI API]
+    Clerk[Clerk]
+    Stripe[Stripe]
+  end
+  Browser --> Vercel
+  Vercel --> FastAPI
+  FastAPI --> Postgres
+  FastAPI --> Redis
+  FastAPI --> Celery
+  Celery --> Twilio
+  Celery --> OpenAI
+  FastAPI --> Pinecone
+  Celery --> R2
+  FastAPI --> Stripe
+  Browser --> Stripe
+  Browser --> Clerk
+  FastAPI --> Clerk
+  Twilio --> FastAPI
+  FastAPI --> Deepgram
+  FastAPI --> ElevenLabs
+  FastAPI --> OpenAI

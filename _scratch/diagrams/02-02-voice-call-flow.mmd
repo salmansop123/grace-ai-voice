@@ -1,0 +1,22 @@
+sequenceDiagram
+  participant Caller
+  participant Twilio
+  participant FastAPI
+  participant Deepgram
+  participant OpenAI as OpenAI GPT-4o
+  participant ElevenLabs
+  participant Redis
+  participant PostgreSQL
+  Caller->>Twilio: Dial phone number
+  Twilio->>FastAPI: POST /webhooks/twilio/inbound
+  FastAPI->>PostgreSQL: Create Call record
+  FastAPI-->>Twilio: TwiML Stream response
+  Twilio->>FastAPI: Open WS /ws/stream/(sid)
+  FastAPI->>Redis: Load/cache agent config
+  FastAPI->>Deepgram: Open STT websocket
+  FastAPI->>ElevenLabs: Greeting TTS stream
+  Deepgram-->>FastAPI: speech_final transcript
+  FastAPI->>OpenAI: Prompt + tools + context
+  OpenAI-->>FastAPI: Response/tool_call
+  FastAPI->>ElevenLabs: TTS request
+  FastAPI->>PostgreSQL: Persist final analysis

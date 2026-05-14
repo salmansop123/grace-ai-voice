@@ -1,0 +1,12 @@
+flowchart LR
+  Browser --> FastAPI
+  Twilio --> FastAPI
+  Stripe --> FastAPI
+  Clerk --> FastAPI
+  FastAPI --> PostgreSQL
+  FastAPI --> Redis
+  FastAPI --> Pinecone
+  FastAPI --> R2
+  Redis --> Browser
+  FastAPI --> Celery
+  Celery --> PostgreSQL

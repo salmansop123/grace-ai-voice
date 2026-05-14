@@ -1,0 +1,51 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 640 180"
+  width="240"
+  height="68"
+  preserveAspectRatio="xMinYMid meet"
+  role="img"
+  aria-label="Grace AI"
+>
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5ff" />
+      <stop offset="100%" stop-color="#253bff" />
+    </linearGradient>
+    <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0057ff" />
+      <stop offset="100%" stop-color="#a100ff" />
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="640" height="180" fill="transparent" />
+
+  <g transform="translate(16 18)">
+    <circle cx="58" cy="58" r="48" fill="url(#g1)" />
+    <circle cx="78" cy="58" r="48" fill="url(#g2)" opacity="0.92" />
+    <circle cx="72" cy="58" r="18" fill="#ffffff" />
+    <circle cx="72" cy="58" r="12" fill="#1e40af" />
+    <path d="M18 52h28M12 62h32M22 72h24" stroke="#c7e8ff" stroke-width="6" stroke-linecap="round" />
+  </g>
+
+  <text
+    x="170"
+    y="96"
+    font-size="84"
+    font-family="Inter, Segoe UI, Arial, sans-serif"
+    font-weight="800"
+    fill="url(#g2)"
+  >
+    Grace AI
+  </text>
+  <text
+    x="172"
+    y="134"
+    font-size="28"
+    font-family="Inter, Segoe UI, Arial, sans-serif"
+    font-weight="500"
+    fill="#6b7280"
+  >
+    AI Voice Calling for Business Automation
+  </text>
+</svg>

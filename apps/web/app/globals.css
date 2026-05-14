@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-base: #f4f7fb;
+  --bg-surface: #ffffff;
+  --bg-elevated: #eef2f7;
+  --border: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --accent: #2563eb;
+  --accent-dim: #e8f2ff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --success: #34d399;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --info: #60a5fa;
+}
+
+.dark {
+  --bg-base: #0a0e1a;
+  --bg-surface: #0d1826;
+  --bg-elevated: #111f33;
+  --border: #1a2f4a;
+  --border-strong: #1e3a5f;
+  --accent: #40beff;
+  --accent-dim: #1a3a5f;
+  --text-primary: #e8f4ff;
+  --text-secondary: #7a9ab8;
+  --text-muted: #3a5a78;
+}
+
+/* Website surfaces stay light even when app root is in dark mode (system preference). */
+.website-light {
+  --bg-base: #f3f7fc;
+  --bg-surface: #ffffff;
+  --bg-elevated: #eef3fb;
+  --border: #e2e8f0;
+  --border-strong: #c7d8f0;
+  --accent: #2563eb;
+  --accent-dim: #e8f2ff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/*
+ * Native <input type="date|time|datetime-local"> controls:
+ * - color-scheme: helps Firefox / native popovers match the theme.
+ * - WebKit/Blink: default calendar/clock bitmap is low-contrast on our surfaces; we paint
+ *   theme electric blue via mask + background-color: var(--accent) (light #2563eb, dark #40beff).
+ */
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"] {
+  color: var(--text-primary);
+  background-color: var(--bg-base);
+  color-scheme: light;
+  accent-color: var(--accent);
+}
+
+html.dark input[type="date"],
+html.dark input[type="time"],
+html.dark input[type="datetime-local"] {
+  color-scheme: dark;
+}
+
+/* Calendar glyph (date + datetime-local) and clock (time) — WebKit / Chromium / Edge */
+@media not (forced-colors: active) {
+  input[type="date"]::-webkit-calendar-picker-indicator,
+  input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 1;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-inline-start: 0.125rem;
+    padding: 0;
+    background-color: var(--accent);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M19 19H5V9h14v10zm0-12H5V6h14v1zM17 3v2h-2V3H9v2H7V3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2h-2zm-8 13h2v2H9v-2zm4 0h2v2h-2v-2zm-4-4h2v2H9v-2zm4 0h2v2h-2v-2z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M19 19H5V9h14v10zm0-12H5V6h14v1zM17 3v2h-2V3H9v2H7V3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2h-2zm-8 13h2v2H9v-2zm4 0h2v2h-2v-2zm-4-4h2v2H9v-2zm4 0h2v2h-2v-2z'/%3E%3C/svg%3E");
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    transition:
+      filter 0.15s ease,
+      background-color 0.15s ease,
+      opacity 0.15s ease;
+  }
+
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 1;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-inline-start: 0.125rem;
+    padding: 0;
+    background-color: var(--accent);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1v5.6l4.5 2.7-.8 1.2z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1v5.6l4.5 2.7-.8 1.2z'/%3E%3C/svg%3E");
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    transition:
+      filter 0.15s ease,
+      background-color 0.15s ease,
+      opacity 0.15s ease;
+  }
+
+  input[type="date"]:hover::-webkit-calendar-picker-indicator,
+  input[type="time"]:hover::-webkit-calendar-picker-indicator,
+  input[type="datetime-local"]:hover::-webkit-calendar-picker-indicator {
+    filter: brightness(1.12);
+  }
+
+  input[type="date"]:focus-visible::-webkit-calendar-picker-indicator,
+  input[type="time"]:focus-visible::-webkit-calendar-picker-indicator,
+  input[type="datetime-local"]:focus-visible::-webkit-calendar-picker-indicator {
+    filter: brightness(1.2);
+  }
+
+  input[type="date"]:active::-webkit-calendar-picker-indicator,
+  input[type="time"]:active::-webkit-calendar-picker-indicator,
+  input[type="datetime-local"]:active::-webkit-calendar-picker-indicator {
+    filter: brightness(0.94);
+  }
+
+  @media (prefers-contrast: more) {
+    input[type="date"]::-webkit-calendar-picker-indicator,
+    input[type="time"]::-webkit-calendar-picker-indicator,
+    input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+      filter: contrast(1.15);
+    }
+  }
+}
