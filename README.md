@@ -211,3 +211,14 @@ Suggested alert baselines:
 ## Related Documents
 
 - Consolidated deep documentation: `docs/ALL-IN-ONE.md`
+
+⚠️ Disclaimer
+
+This repository and its contents are the intellectual property of the author.
+All rights are reserved.
+
+You are not allowed to copy, modify, distribute, or use any part of this project without explicit written permission from the owner.
+
+If you wish to use this project or any part of it, you must first obtain prior authorization.
+
+Unauthorized use, reproduction, or distribution of this code may result in legal action.
