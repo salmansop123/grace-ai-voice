@@ -212,7 +212,8 @@ Suggested alert baselines:
 
 - Consolidated deep documentation: `docs/ALL-IN-ONE.md`
 
-⚠️ Disclaimer
+
+## ⚠️ Disclaimer
 
 This repository and its contents are the intellectual property of the author.
 All rights are reserved.
