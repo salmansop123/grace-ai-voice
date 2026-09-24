@@ -7,6 +7,7 @@
     "dev:fresh": "npm run dev:fresh --prefix apps/web",
     "build:web": "npm run build --prefix apps/web",
     "start": "bash scripts/restart-all.sh",
+    "stop": "bash scripts/stop-all.sh",
     "dev:all": "bash scripts/restart-all.sh --watch"
   }
 }
